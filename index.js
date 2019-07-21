@@ -35,7 +35,7 @@ const writeText = async (
         cur = xBounds;
       }
     });
-  return image.print(fontFile, x, y, { splited_text }, xBounds, yBounds);
+  return image.print(fontFile, x, y, { text: splited_text }, xBounds, yBounds);
 };
 
 /**

@@ -19,18 +19,21 @@ const writeText = async (
   const fontFile = await Jimp.loadFont(
     path.join(__dirname, `fonts/${filename}.fnt`)
   );
-  var splited_text ='';
+  var splited_text = "";
   var cur = xBounds;
-  var buf=new Buffer(text);
-  buf.toString().split('').forEach(function(c){
-    splited_text+=c;
-    cur=cur+size;
-    if(cur>600){
-      splited_text+=' ';
-      cur=xBounds;
-    }
-  });
-  return image.print(fontFile, x, y, { splited_text }, xBounds, yBounds);
+  var buf = new Buffer(text);
+  buf
+    .toString()
+    .split("")
+    .forEach(function(c) {
+      splited_text += c;
+      cur = cur + size;
+      if (cur > 600) {
+        splited_text += " ";
+        cur = xBounds;
+      }
+    });
+  return image.print(fontFile, x, y, { text: splited_text }, xBounds, yBounds);
 };
 
 /**
